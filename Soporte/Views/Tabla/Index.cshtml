@@ -1,0 +1,61 @@
+﻿@*Crear el modelo y el controlador del View Model**@
+
+@model List<Soporte.Models.ViewModels.TablaComputadorasViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+@*Aca se crea la tabla, primero encabezados, luego un foreach que recorre los datos*@
+@*Container -> Row -> tabla o datos dentro*@
+<div class="container">
+    <div class="row">
+        <a href="~/Tabla/NuevaComputadora" class="btn btn-primary"> Nueva Computadora </a>
+    </div>
+    <p> Listado de computadoras al momento: </p>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>ST</th>
+                    <th>Nro Serie</th>
+                    <th>Equipo</th>
+                    <th>Lugar</th>
+                    <th>Sector</th>
+                    <th>Nro Telefono</th>
+                    <th>ST Monitor</th>
+                    <th>Nro Serie Monitor</th>
+                    <th>Sistema Operativo</th>
+                    <th>Memoria Ram</th>
+                    <th>Procesador</th>
+                    <th>Observaciones</th>
+                </tr>
+
+                @*Foreach donde recorre posicion por posicion y trae los valores cargados de la tabla*@
+                @foreach (var oElemento in Model)
+                {
+                    <tr>
+                        <td>@oElemento.ST</td>
+                        <td>@oElemento.numerSerie</td>
+                        <td>@oElemento.Equipo</td>
+                        <td>@oElemento.Lugar</td>
+                        <td>@oElemento.Sector</td>
+                        <td>@oElemento.Telefono</td>
+                        <td>@oElemento.stMonitor</td>
+                        <td>@oElemento.nroSerieMonitor</td>
+                        <td>@oElemento.sistemaOperativo</td>
+                        <td>@oElemento.memoriaRam</td>
+                        <td>@oElemento.Procesador</td>
+                        <td>@oElemento.Observaciones</td>
+                        <td>
+                            <a class="btn btn-default" href="~/Tabla/EditarComputadora/@oElemento.IDcomputadora">Editar</a>
+                            <a class="btn btn-danger" href="~/Tabla/EliminarComputadora/@oElemento.IDcomputadora">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

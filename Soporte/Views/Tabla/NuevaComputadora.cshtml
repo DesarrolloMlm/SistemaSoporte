@@ -1,0 +1,82 @@
+﻿@model Soporte.Models.ViewModels.TablaComputadorasViewModel
+@{
+    ViewBag.Title = "NuevaComputadora";
+}
+
+
+<h2>Nueva Computadora:</h2>
+
+@*Creo el formulario, junto con la validacion de cada dato.*@
+
+@*Aca va lo que vas a mostrar, donde va a buscar la tabla, y el metodo*@
+
+@using (Html.BeginForm("NuevaComputadora", "Tabla", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                @Html.LabelFor(d => d.ST, "ST nuevo:")
+                @Html.TextBoxFor(d => d.ST, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.ST, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.numerSerie, "Numero de serie del equipo:")
+                @Html.TextBoxFor(d => d.numerSerie, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Equipo, "Equipo:")
+                @Html.TextBoxFor(d => d.Equipo, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Equipo, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Lugar, "Lugar del equipo:")
+                @Html.TextBoxFor(d => d.Lugar, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Lugar, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Sector, "Sector del equipo:")
+                @Html.TextBoxFor(d => d.Sector, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Sector, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Telefono, "Numero de telefono:")
+                @Html.TextBoxFor(d => d.Telefono, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.stMonitor, "St del Monitor:")
+                @Html.TextBoxFor(d => d.stMonitor, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.nroSerieMonitor, "Numero de serie del monitor:")
+                @Html.TextBoxFor(d => d.nroSerieMonitor, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.sistemaOperativo, "Sistema operativo:")
+                @Html.TextBoxFor(d => d.sistemaOperativo, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.memoriaRam, "Memoria ram:")
+                @Html.TextBoxFor(d => d.memoriaRam, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Procesador, "Procesador:")
+                @Html.TextBoxFor(d => d.Procesador, "", new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Observaciones, "Observaciones:")
+                @Html.TextBoxFor(d => d.Observaciones, "", new { @class = "form-control" })
+            </div>
+            <br />
+
+            <div style="text-align:right">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+            <div style="text-align:right">
+                <input value="Atras" class="btn btn-primary" onclick="history.back()" />
+            </div>
+        </div>
+    </div>
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>

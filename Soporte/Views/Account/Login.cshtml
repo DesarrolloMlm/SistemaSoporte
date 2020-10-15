@@ -1,0 +1,286 @@
+﻿@using Soporte.Models
+
+@model LoginViewModel
+@{
+    ViewBag.Title = "Iniciar sesión";
+}
+
+
+<style>
+    .title {
+        width: 100%;
+        float: left;
+        line-height: 46px;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #ED2553;
+        position: relative;
+        color: white;
+    }
+
+    .container {
+        width: 900px;
+    }
+
+    html {
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 24px;
+    }
+
+    .titulos-inicio {
+        font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+        background: #889ccf;
+        margin: 0 0 25px;
+        overflow: hidden;
+        padding: 20px;
+        border-radius: 35px 0px 35px 0px;
+        -moz-border-radius: 35px 0px 35px 0px;
+        -webkit-border-radius: 35px 0px 35px 0px;
+        border: 2px solid #5878ca
+    }
+
+    *,
+    *:before,
+    *:after {
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+
+    body {
+        margin: 0;
+        line-height: 1.5;
+        background-image: url(https://padasystem.com.ar/wp-content/uploads/2017/04/reparacion-de-pc.jpg);
+        font-family: Roboto, Helvectica, Arial, sans-serif;
+        color: #333;
+    }
+
+    .texto-gonza {
+        font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 400;
+        text-align: center;
+        background: #889ccf;
+        margin: 0 0 25px;
+        overflow: hidden;
+        padding: 20px;
+        border-radius: 35px 0px 35px 0px;
+        -moz-border-radius: 35px 0px 35px 0px;
+        -webkit-border-radius: 35px 0px 35px 0px;
+        border: 2px solid #5878ca
+    }
+
+    /* headers */
+
+    h1 {
+        font-family: "Roboto Slab", Times, "Times New Roman", serif;
+        font-size: 2em;
+    }
+
+
+    /* form elements */
+
+    label {
+        display: block;
+    }
+
+    select,
+    textarea,
+    input {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+        color: inherit;
+    }
+
+        input[type=submit] {
+            border: none;
+            cursor: pointer;
+        }
+
+
+    /* vertical align snippet */
+
+    .va-cont {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    .va-inn {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+
+    /* styles */
+
+    .form-container {
+        width: 80%;
+        padding: 10px;
+        margin: auto;
+    }
+
+    .form-heading {
+        margin-top: 0;
+        margin-bottom: 1.2em;
+        text-align: center;
+    }
+
+    .form-heading-highlight {
+        color: #009688;
+    }
+
+    .form-row {
+        position: relative;
+        margin-top: 30px;
+    }
+
+    .form-label {
+        position: absolute;
+        top: 17px;
+        left: 20px;
+        color: #999;
+        cursor: text;
+        transition: all .15s ease-in-out 0s;
+    }
+
+    .form-textbox,
+    .form-submit {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .form-textbox {
+        box-shadow: inset 0 0 10px rgba(0,0,0,.1);
+    }
+
+        .form-textbox:focus ~ .form-label,
+        .form-textbox:valid ~ .form-label {
+            top: -1.5em;
+            left: 0;
+            font-size: .8em;
+            color: inherit;
+            cursor: pointer;
+        }
+
+    .form-submit {
+        font-size: 25px;
+        height: 100px;
+        width: 450px;
+        display: block;
+        margin: auto;
+        background-color: #009688;
+        font-weight: 700;
+        color: #fff;
+        transition: opacity .15s ease-in-out 0s;
+    }
+
+        .form-submit:hover {
+            opacity: .75;
+        }
+</style>
+
+
+
+<body>
+    <div class="container" style="background-image: url(https://image.freepik.com/foto-gratis/fondo-textura-madera-marron-claro_53876-75016.jpg)">
+
+        <div class="row" style="padding-bottom: 5px;background-image: url(https://img.freepik.com/vector-gratis/elegante-fondo-blanco-textura_23-2148431731.jpg?size=626&ext=jpg)">
+            <img src="~/Imagenes/foto 1.jpg" style="width: 175px;height: 175px" />
+            <img src="~/Imagenes/foto 3.jpg" style="width: 500px;height: 140px" />
+            <img src="~/Imagenes/foto 2.jpg" style="width: 175px;height: 175px;margin-left: 10px" />
+
+        </div>
+
+        <div class="row">
+            <img src="~/Imagenes/inicio sesion.jpg" style="width: 400px;height: 150px;margin: auto;display: block" />
+      
+        @* Parte para el inicio de Sesion con usuario y contraseña *@
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @*Mail usuarios*@
+
+                <div class="form-row">
+                    @*Validacion del mail y contraseña*@
+                    @Html.ValidationSummary(true, "", new { @class = "red" })
+
+                    @*Nombre de afuera del panel*@
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 titulos-inicio" })
+
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-textbox" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "red" })
+
+                </div>
+
+                @*Contraseña*@
+                <div class="form-row">
+
+                    @*Nombre de afuera del panel*@
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 titulos-inicio" })
+
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-textbox" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "red" })
+                </div>
+
+                @*Para recordar la cuenta*@
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-12">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                    </div>
+                </div>
+
+                @*Boton de inicio de sesion*@
+                <div class="form-row">
+                    <div class="col-md-3" style="padding-bottom:15px">
+                        <input type="submit" value="Iniciar sesión" class="form-submit" />
+                    </div>
+
+
+                </div>
+            }
+
+            <div class="row">
+                <h5>
+                    @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                </h5>
+
+                <div class="col-md-3">
+                    <a class="btn btn-default" href="~/Account/Register">Registrarse</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+    @* Para agregar con inicio de sesion con fb, tw, ig *@
+    @*<div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
