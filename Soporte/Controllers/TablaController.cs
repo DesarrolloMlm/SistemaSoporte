@@ -22,20 +22,20 @@ namespace Soporte.Controllers
             using (baseSoporteEntities db = new baseSoporteEntities())
             {
                 //Creas la lista de compus y asignas los nombres de las columnas de tu tabla
-                listaComputadoras = (from d in db.Computadora
+                listaComputadoras = (from d in db.ComputadorasSet
                                      select new TablaComputadorasViewModel
                                      {
                                          IDcomputadora = d.IDcomputadora,
                                          ST = d.ST,
-                                         numerSerie = d.Nro_Serie,
+                                         numerSerie = d.numerSerie,
                                          Equipo = d.Equipo,
                                          Lugar = d.Lugar,
                                          Sector = d.Sector,
-                                         Telefono = d.Nro__Telefono.Value, //para el tipo Int , se agrega el value al final
-                                         stMonitor = d.ST_Monitor,
-                                         nroSerieMonitor = d.Nro__Serie_Monitor,
-                                         sistemaOperativo = d.Sistema_Operativo,
-                                         memoriaRam = d.Memoria_Ram,
+                                         Telefono = d.Telefono, //para el tipo Int , se agrega el value al final
+                                         stMonitor = d.stMonitor,
+                                         nroSerieMonitor = d.nroSerieMonitor,
+                                         sistemaOperativo = d.sistemaOperativo,
+                                         memoriaRam = d.memoriaRam,
                                          Procesador = d.Procesador,
                                          Observaciones = d.Observaciones
                                      }).ToList();
@@ -59,22 +59,22 @@ namespace Soporte.Controllers
                 {
                     using (baseSoporteEntities db = new baseSoporteEntities())
                     {
-                        var oTabla = new Computadora();
+                        var oTabla = new Computadoras();
                         oTabla.IDcomputadora = model.IDcomputadora;
                         oTabla.ST = model.ST;
-                        oTabla.Nro_Serie = model.numerSerie;
+                        oTabla.numerSerie = model.numerSerie;
                         oTabla.Equipo = model.Equipo;
                         oTabla.Lugar = model.Lugar;
                         oTabla.Sector = model.Sector;
-                        oTabla.Nro__Telefono = model.Telefono;
-                        oTabla.ST_Monitor = model.stMonitor;
-                        oTabla.Nro__Serie_Monitor = model.nroSerieMonitor;
-                        oTabla.Sistema_Operativo = model.sistemaOperativo;
-                        oTabla.Memoria_Ram = model.memoriaRam;
+                        oTabla.Telefono = model.Telefono;
+                        oTabla.stMonitor = model.stMonitor;
+                        oTabla.nroSerieMonitor = model.nroSerieMonitor;
+                        oTabla.sistemaOperativo = model.sistemaOperativo;
+                        oTabla.memoriaRam = model.memoriaRam;
                         oTabla.Procesador = model.Procesador;
                         oTabla.Observaciones = model.Observaciones;
 
-                        db.Computadora.Add(oTabla);
+                        db.ComputadorasSet.Add(oTabla);
                         db.SaveChanges();
                     }
 
@@ -93,18 +93,18 @@ namespace Soporte.Controllers
             TablaComputadorasViewModel model = new TablaComputadorasViewModel();
             using (baseSoporteEntities db = new baseSoporteEntities())
             {
-                var oTabla = db.Computadora.Find(Id);
+                var oTabla = db.ComputadorasSet.Find(Id);
                 model.IDcomputadora = oTabla.IDcomputadora;
                 model.ST = oTabla.ST;
-                model.numerSerie = oTabla.Nro_Serie;
+                model.numerSerie = oTabla.numerSerie;
                 model.Equipo = oTabla.Equipo;
                 model.Lugar = oTabla.Lugar;
                 model.Sector = oTabla.Sector;
-                model.Telefono = oTabla.Nro__Telefono.Value;
-                model.stMonitor = oTabla.ST_Monitor;
-                model.nroSerieMonitor = oTabla.Nro__Serie_Monitor;
-                model.sistemaOperativo = oTabla.Sistema_Operativo;
-                model.memoriaRam = oTabla.Memoria_Ram;
+                model.Telefono = oTabla.Telefono;
+                model.stMonitor = oTabla.stMonitor;
+                model.nroSerieMonitor = oTabla.nroSerieMonitor;
+                model.sistemaOperativo = oTabla.sistemaOperativo;
+                model.memoriaRam = oTabla.memoriaRam;
                 model.Procesador = oTabla.Procesador;
                 model.Observaciones = oTabla.Observaciones;
             }
@@ -122,18 +122,18 @@ namespace Soporte.Controllers
                 {
                     using (baseSoporteEntities db = new baseSoporteEntities())
                     {
-                        var oTabla = db.Computadora.Find(model.IDcomputadora);
+                        var oTabla = db.ComputadorasSet.Find(model.IDcomputadora);
                         oTabla.ST = model.ST;
                         oTabla.IDcomputadora = model.IDcomputadora;
-                        oTabla.Nro_Serie = model.numerSerie;
+                        oTabla.numerSerie = model.numerSerie;
                         oTabla.Equipo = model.Equipo;
                         oTabla.Lugar = model.Lugar;
                         oTabla.Sector = model.Sector;
-                        oTabla.Nro__Telefono = model.Telefono;
-                        oTabla.ST_Monitor = model.stMonitor;
-                        oTabla.Nro__Serie_Monitor = model.nroSerieMonitor;
-                        oTabla.Sistema_Operativo = model.sistemaOperativo;
-                        oTabla.Memoria_Ram = model.memoriaRam;
+                        oTabla.Telefono = model.Telefono;
+                        oTabla.stMonitor = model.stMonitor;
+                        oTabla.nroSerieMonitor = model.nroSerieMonitor;
+                        oTabla.sistemaOperativo = model.sistemaOperativo;
+                        oTabla.memoriaRam = model.memoriaRam;
                         oTabla.Procesador = model.Procesador;
                         oTabla.Observaciones = model.Observaciones;
 
@@ -157,8 +157,8 @@ namespace Soporte.Controllers
             TablaComputadorasViewModel model = new TablaComputadorasViewModel();
             using (baseSoporteEntities db = new baseSoporteEntities())
             {
-                var oTabla = db.Computadora.Find(Id);
-                db.Computadora.Remove(oTabla);
+                var oTabla = db.ComputadorasSet.Find(Id);
+                db.ComputadorasSet.Remove(oTabla);
                 db.SaveChanges();
 
             }

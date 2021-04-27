@@ -29,6 +29,14 @@
         font-size: 24px;
     }
 
+    .prueba {
+        margin-left:150px;
+        -webkit-text-stroke: 1px black;
+        color: transparent;
+        font-size: 40px;
+        font-family: arial;
+    }
+
     .titulos-inicio {
         font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
         color: #ffffff;
@@ -88,6 +96,8 @@
 
     label {
         display: block;
+        color: black;
+        font-size: 20px;
     }
 
     select,
@@ -189,6 +199,75 @@
         .form-submit:hover {
             opacity: .75;
         }
+
+    .boton {
+        align-content: center;
+        text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        text-decoration: none;
+        font-family: 'Helvetica Neue', Helvetica, sans-serif;
+        display: inline-block;
+        color: #FFF;
+        background: #7F8C8D;
+        padding: 7px 20px;
+        white-space: nowrap;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 100px;
+        margin: 10px 5px;
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+    .rojo{
+  background: #E74C3C;
+  box-shadow: 0px 5px 0px 0px #C0392B;
+}
+
+.rojo:hover{
+  background: #ff5242;
+}
+
+.rojo:active{
+  box-shadow: 0px 2px 0px 0px #C0392B;
+}
+
+
+    .azul {
+        background: #3498DB;
+        box-shadow: 0px 5px 0px 0px #2980B9;
+    }
+
+        .azul:hover {
+            background: #39a0e5;
+        }
+
+        .azul:active {
+            box-shadow: 0px 2px 0px 0px #2980B9;
+        }
+
+        .verde{
+  background: #2ECC71;
+  box-shadow: 0px 5px 0px 0px #27AE60;
+}
+
+.verde:hover{
+  background: #32db78;
+}
+
+.verde:active{
+  box-shadow: 0px 2px 0px 0px #27AE60;
+}
+
+        .validacion-datos{
+            color:red;
+            font-size:10px;
+        }
+
+        .texto-adentro{
+            color:white;
+        }
 </style>
 
 
@@ -205,39 +284,40 @@
 
         <div class="row">
             <img src="~/Imagenes/inicio sesion.jpg" style="width: 400px;height: 150px;margin: auto;display: block" />
-      
-        @* Parte para el inicio de Sesion con usuario y contraseña *@
+        </div>
+        <div class="row">
+            @* Parte para el inicio de Sesion con usuario y contraseña *@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
 
                 @*Mail usuarios*@
 
-                <div class="form-row">
+                <div class="row">
                     @*Validacion del mail y contraseña*@
                     @Html.ValidationSummary(true, "", new { @class = "red" })
 
                     @*Nombre de afuera del panel*@
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-3 titulos-inicio" })
+                    @Html.LabelFor(m => m.Email, "Usuario: ", new { @class = "col-md-4 prueba" })
 
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-textbox" })
-                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "red" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "validacion-datos" })
 
                 </div>
 
                 @*Contraseña*@
-                <div class="form-row">
+                <div class="row">
 
                     @*Nombre de afuera del panel*@
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 titulos-inicio" })
+                    @Html.LabelFor(m => m.Password, "Contraseña: ", new { @class = "col-md-4 prueba" })
 
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-textbox" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "red" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "validacion-datos" })
                 </div>
 
                 @*Para recordar la cuenta*@
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-12">
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-5" style="margin-left:300px">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
                             @Html.LabelFor(m => m.RememberMe)
@@ -246,31 +326,27 @@
                 </div>
 
                 @*Boton de inicio de sesion*@
-                <div class="form-row">
-                    <div class="col-md-3" style="padding-bottom:15px">
-                        <input type="submit" value="Iniciar sesión" class="form-submit" />
+                <div class="row">
+                    <div class="col-md-3" style="margin-left:200px">
+                        <input type="submit" value="Iniciar sesión" class="boton verde" />
                     </div>
 
+                    <div class="col-md-3">
+                        <a class="boton rojo" href="~/Account/Register">Registrarse</a>
+                    </div>
 
                 </div>
             }
-
-            <div class="row">
-                <h5>
-                    @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                </h5>
-
-                <div class="col-md-3">
-                    <a class="btn btn-default" href="~/Account/Register">Registrarse</a>
-                </div>
-            </div>
         </div>
 
 
+        <div class="row">
+            <div class="boton azul">
+                @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword", new {@style = "color:white"})
+            </div>
 
 
-
-
+        </div>
     </div>
 
     @* Para agregar con inicio de sesion con fb, tw, ig *@

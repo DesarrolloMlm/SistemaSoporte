@@ -12,19 +12,19 @@ namespace Soporte.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Computadora
+    public partial class Computadoras
     {
         public int IDcomputadora { get; set; }
         public string ST { get; set; }
-        public string Nro_Serie { get; set; }
+        public string numerSerie { get; set; }
         public string Equipo { get; set; }
         public string Lugar { get; set; }
         public string Sector { get; set; }
-        public Nullable<int> Nro__Telefono { get; set; }
-        public string ST_Monitor { get; set; }
-        public string Nro__Serie_Monitor { get; set; }
-        public string Sistema_Operativo { get; set; }
-        public string Memoria_Ram { get; set; }
+        public string Telefono { get; set; }
+        public string stMonitor { get; set; }
+        public string nroSerieMonitor { get; set; }
+        public string sistemaOperativo { get; set; }
+        public string memoriaRam { get; set; }
         public string Procesador { get; set; }
         public string Observaciones { get; set; }
     }

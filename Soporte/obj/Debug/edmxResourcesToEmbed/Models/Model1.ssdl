@@ -61,22 +61,22 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
-  <EntityType Name="Computadora">
+  <EntityType Name="Computadoras">
     <Key>
       <PropertyRef Name="IDcomputadora" />
     </Key>
     <Property Name="IDcomputadora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ST" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Nro Serie" Type="varchar" MaxLength="50" />
-    <Property Name="Equipo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ST" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="numerSerie" Type="varchar" MaxLength="50" />
+    <Property Name="Equipo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Lugar" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Sector" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Nro. Telefono" Type="int" />
-    <Property Name="ST Monitor" Type="varchar" MaxLength="10" />
-    <Property Name="Nro. Serie Monitor" Type="varchar" MaxLength="50" />
-    <Property Name="Sistema Operativo" Type="varchar" MaxLength="15" />
-    <Property Name="Memoria Ram" Type="varchar" MaxLength="15" />
-    <Property Name="Procesador" Type="varchar" MaxLength="35" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="stMonitor" Type="varchar" MaxLength="50" />
+    <Property Name="nroSerieMonitor" Type="varchar" MaxLength="50" />
+    <Property Name="sistemaOperativo" Type="varchar" MaxLength="50" />
+    <Property Name="memoriaRam" Type="varchar" MaxLength="50" />
+    <Property Name="Procesador" Type="varchar" MaxLength="50" />
     <Property Name="Observaciones" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -152,7 +152,7 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Computadora" EntityType="Self.Computadora" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Computadoras" EntityType="Self.Computadoras" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

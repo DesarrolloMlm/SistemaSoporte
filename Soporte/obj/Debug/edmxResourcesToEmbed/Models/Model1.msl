@@ -56,25 +56,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Computadora">
-      <EntityTypeMapping TypeName="baseSoporteModel.Computadora">
-        <MappingFragment StoreEntitySet="Computadora">
-          <ScalarProperty Name="IDcomputadora" ColumnName="IDcomputadora" />
-          <ScalarProperty Name="ST" ColumnName="ST" />
-          <ScalarProperty Name="Nro_Serie" ColumnName="Nro Serie" />
-          <ScalarProperty Name="Equipo" ColumnName="Equipo" />
-          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
-          <ScalarProperty Name="Sector" ColumnName="Sector" />
-          <ScalarProperty Name="Nro__Telefono" ColumnName="Nro. Telefono" />
-          <ScalarProperty Name="ST_Monitor" ColumnName="ST Monitor" />
-          <ScalarProperty Name="Nro__Serie_Monitor" ColumnName="Nro. Serie Monitor" />
-          <ScalarProperty Name="Sistema_Operativo" ColumnName="Sistema Operativo" />
-          <ScalarProperty Name="Memoria_Ram" ColumnName="Memoria Ram" />
-          <ScalarProperty Name="Procesador" ColumnName="Procesador" />
-          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="baseSoporteModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -94,5 +75,24 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="ComputadorasSet">
+      <EntityTypeMapping TypeName="baseSoporteModel.Computadoras">
+        <MappingFragment StoreEntitySet="Computadoras">
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Procesador" ColumnName="Procesador" />
+          <ScalarProperty Name="memoriaRam" ColumnName="memoriaRam" />
+          <ScalarProperty Name="sistemaOperativo" ColumnName="sistemaOperativo" />
+          <ScalarProperty Name="nroSerieMonitor" ColumnName="nroSerieMonitor" />
+          <ScalarProperty Name="stMonitor" ColumnName="stMonitor" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Sector" ColumnName="Sector" />
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+          <ScalarProperty Name="numerSerie" ColumnName="numerSerie" />
+          <ScalarProperty Name="ST" ColumnName="ST" />
+          <ScalarProperty Name="IDcomputadora" ColumnName="IDcomputadora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

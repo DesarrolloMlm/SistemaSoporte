@@ -66,22 +66,22 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="Computadora">
+        <EntityType Name="Computadoras">
           <Key>
             <PropertyRef Name="IDcomputadora" />
           </Key>
           <Property Name="IDcomputadora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ST" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Nro Serie" Type="varchar" MaxLength="50" />
-          <Property Name="Equipo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ST" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="numerSerie" Type="varchar" MaxLength="50" />
+          <Property Name="Equipo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Lugar" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Sector" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nro. Telefono" Type="int" />
-          <Property Name="ST Monitor" Type="varchar" MaxLength="10" />
-          <Property Name="Nro. Serie Monitor" Type="varchar" MaxLength="50" />
-          <Property Name="Sistema Operativo" Type="varchar" MaxLength="15" />
-          <Property Name="Memoria Ram" Type="varchar" MaxLength="15" />
-          <Property Name="Procesador" Type="varchar" MaxLength="35" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" />
+          <Property Name="stMonitor" Type="varchar" MaxLength="50" />
+          <Property Name="nroSerieMonitor" Type="varchar" MaxLength="50" />
+          <Property Name="sistemaOperativo" Type="varchar" MaxLength="50" />
+          <Property Name="memoriaRam" Type="varchar" MaxLength="50" />
+          <Property Name="Procesador" Type="varchar" MaxLength="50" />
           <Property Name="Observaciones" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -157,7 +157,7 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Computadora" EntityType="Self.Computadora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Computadoras" EntityType="Self.Computadoras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -239,24 +239,6 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="Computadora">
-          <Key>
-            <PropertyRef Name="IDcomputadora" />
-          </Key>
-          <Property Name="IDcomputadora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ST" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nro_Serie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Equipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Lugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nro__Telefono" Type="Int32" />
-          <Property Name="ST_Monitor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Nro__Serie_Monitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Sistema_Operativo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Memoria_Ram" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Procesador" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-          <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -305,7 +287,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="Computadora" EntityType="Self.Computadora" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -319,7 +300,26 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="ComputadorasSet" EntityType="baseSoporteModel.Computadoras" />
         </EntityContainer>
+        <EntityType Name="Computadoras">
+          <Key>
+            <PropertyRef Name="IDcomputadora" />
+          </Key>
+          <Property Name="IDcomputadora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ST" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="numerSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Equipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lugar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sector" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="stMonitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="nroSerieMonitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sistemaOperativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="memoriaRam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Procesador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -381,25 +381,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Computadora">
-            <EntityTypeMapping TypeName="baseSoporteModel.Computadora">
-              <MappingFragment StoreEntitySet="Computadora">
-                <ScalarProperty Name="IDcomputadora" ColumnName="IDcomputadora" />
-                <ScalarProperty Name="ST" ColumnName="ST" />
-                <ScalarProperty Name="Nro_Serie" ColumnName="Nro Serie" />
-                <ScalarProperty Name="Equipo" ColumnName="Equipo" />
-                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
-                <ScalarProperty Name="Sector" ColumnName="Sector" />
-                <ScalarProperty Name="Nro__Telefono" ColumnName="Nro. Telefono" />
-                <ScalarProperty Name="ST_Monitor" ColumnName="ST Monitor" />
-                <ScalarProperty Name="Nro__Serie_Monitor" ColumnName="Nro. Serie Monitor" />
-                <ScalarProperty Name="Sistema_Operativo" ColumnName="Sistema Operativo" />
-                <ScalarProperty Name="Memoria_Ram" ColumnName="Memoria Ram" />
-                <ScalarProperty Name="Procesador" ColumnName="Procesador" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="baseSoporteModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -419,6 +400,25 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ComputadorasSet">
+            <EntityTypeMapping TypeName="baseSoporteModel.Computadoras">
+              <MappingFragment StoreEntitySet="Computadoras">
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Procesador" ColumnName="Procesador" />
+                <ScalarProperty Name="memoriaRam" ColumnName="memoriaRam" />
+                <ScalarProperty Name="sistemaOperativo" ColumnName="sistemaOperativo" />
+                <ScalarProperty Name="nroSerieMonitor" ColumnName="nroSerieMonitor" />
+                <ScalarProperty Name="stMonitor" ColumnName="stMonitor" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Sector" ColumnName="Sector" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+                <ScalarProperty Name="numerSerie" ColumnName="numerSerie" />
+                <ScalarProperty Name="ST" ColumnName="ST" />
+                <ScalarProperty Name="IDcomputadora" ColumnName="IDcomputadora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

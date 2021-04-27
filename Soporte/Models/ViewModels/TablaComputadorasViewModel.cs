@@ -20,7 +20,7 @@ namespace Soporte.Models.ViewModels
         public string Lugar { get; set; }
         [Required]
         public string Sector { get; set; }
-        public int Telefono { get; set; }
+        public string Telefono { get; set; }
         public string stMonitor { get; set; }
         public string nroSerieMonitor { get; set; }
         public string sistemaOperativo { get; set; }

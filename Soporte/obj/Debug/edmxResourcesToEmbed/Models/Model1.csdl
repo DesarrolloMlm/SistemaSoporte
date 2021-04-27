@@ -59,24 +59,6 @@
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
     <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
   </EntityType>
-  <EntityType Name="Computadora">
-    <Key>
-      <PropertyRef Name="IDcomputadora" />
-    </Key>
-    <Property Name="IDcomputadora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ST" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Nro_Serie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Equipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Lugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Sector" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Nro__Telefono" Type="Int32" />
-    <Property Name="ST_Monitor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Nro__Serie_Monitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Sistema_Operativo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Memoria_Ram" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="Procesador" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
-    <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -125,7 +107,6 @@
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-    <EntitySet Name="Computadora" EntityType="Self.Computadora" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -139,5 +120,24 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <EntitySet Name="ComputadorasSet" EntityType="baseSoporteModel.Computadoras" />
   </EntityContainer>
+  <EntityType Name="Computadoras">
+    <Key>
+      <PropertyRef Name="IDcomputadora" />
+    </Key>
+    <Property Name="IDcomputadora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ST" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="numerSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Lugar" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sector" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="stMonitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nroSerieMonitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sistemaOperativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="memoriaRam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Procesador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

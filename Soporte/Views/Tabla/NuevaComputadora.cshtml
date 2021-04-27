@@ -4,6 +4,13 @@
 }
 
 
+<style>
+    .alerta-validacion{
+        color:red; 
+    }
+
+</style>
+
 <h2>Nueva Computadora:</h2>
 
 @*Creo el formulario, junto con la validacion de cada dato.*@
@@ -17,7 +24,7 @@
             <div>
                 @Html.LabelFor(d => d.ST, "ST nuevo:")
                 @Html.TextBoxFor(d => d.ST, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.ST, null, new { @class = "red" })
+                @Html.ValidationMessageFor(d => d.ST, null, new { @class = "alerta-validacion" })
             </div>
             <div>
                 @Html.LabelFor(d => d.numerSerie, "Numero de serie del equipo:")
@@ -26,17 +33,17 @@
             <div>
                 @Html.LabelFor(d => d.Equipo, "Equipo:")
                 @Html.TextBoxFor(d => d.Equipo, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Equipo, null, new { @class = "red" })
+                @Html.ValidationMessageFor(d => d.Equipo, null, new { @class = "alerta-validacion" })
             </div>
             <div>
                 @Html.LabelFor(d => d.Lugar, "Lugar del equipo:")
                 @Html.TextBoxFor(d => d.Lugar, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Lugar, null, new { @class = "red" })
+                @Html.ValidationMessageFor(d => d.Lugar, null, new { @class = "alerta-validacion" })
             </div>
             <div>
                 @Html.LabelFor(d => d.Sector, "Sector del equipo:")
                 @Html.TextBoxFor(d => d.Sector, "", new { @class = "form-control" })
-                @Html.ValidationMessageFor(d => d.Sector, null, new { @class = "red" })
+                @Html.ValidationMessageFor(d => d.Sector, null, new { @class = "alerta-validacion" })
             </div>
             <div>
                 @Html.LabelFor(d => d.Telefono, "Numero de telefono:")
